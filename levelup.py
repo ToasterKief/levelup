@@ -1,13 +1,15 @@
 #!/usr/bin/python3 
-
-# Module imports go down here.
+"""
+Below are the necessary modules to run the levelup program. The 'os' module is important because it gives us functionality on an operating system level. The time module is quite useful when it comes to menus and pacing the script. Below those we'll find modules that make up the content of the program.
+"""
+import sys
 import os
 import time
-# from levelup_menus import welcome_levelup
-from lib/levelup_menus import welcome_menu 
-# from levelup_main import  levelup_main
-
+from levelup_menus import * 
+from levelup_main import levelup_main
+from testfunction import test_function
 # Main function
+
 
 
 def main():
@@ -18,12 +20,36 @@ def main():
         os.system("clear")
         time.sleep(.5)
         welcome_menu()
-        welcome_choice = str(input("Enter the path to a previous save file or press type 'NEW' => \n"))
-        if welcome_choice == "new" or welcome_choice == "NEW":
-            levelup_main()
+        savefile_input = str(input("Please enter a choice from the options given to you => "))
+        if savefile_input == "1":
+            """
+            os.system("clear")
+            print("Option '1' is functional\n")
+            time.sleep(2.0)
+            test_function()
+            """
+            levelup_main(load_session= False)
+            
         
-        else:
-            levelup_main(welcome_choice)
+        elif savefile_input == "2":
+            """
+            os.system("clear")
+            print("Option '2' is functional\n")
+            time.sleep(2.0)
+            test_function()
+            """
+            levelup_main(load_session = True)
+            
+            
+        elif savefile_input == "99":
+            os.system("clear")
+            time.sleep(0.1)
+            print("Now exiting the program..\n")
+            time.sleep(0.6)
+            print("Hope you enjoyed it!\n")
+            time.sleep(0.5)
+            sys.exit(0)
+            
         
 if __name__ == "__main__":
     main()
